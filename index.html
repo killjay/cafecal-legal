@@ -3,35 +3,43 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Café Cal — Legal</title>
-  <style>
-    :root { color-scheme: light dark; }
-    body {
-      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      max-width: 720px;
-      margin: 4rem auto;
-      padding: 0 1.25rem;
-      color: #1c1c1e;
-      background: #fff;
-    }
-    @media (prefers-color-scheme: dark) {
-      body { color: #f2f2f7; background: #000; }
-      a { color: #4ea1ff; }
-    }
-    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
-    p.muted { color: #6e6e73; margin-top: 0; }
-    ul { padding-left: 1.2rem; }
-    a { color: #0a84ff; }
-  </style>
+  <title>Café Cal — Legal &amp; account help</title>
+  <meta name="description" content="Legal information and account help for Café Cal — a nutrition and meal tracking app." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Café Cal</h1>
-  <p class="muted">Legal &amp; account help</p>
-  <ul>
-    <li><a href="delete-account.html">Delete your account</a></li>
-  </ul>
-  <p class="muted" style="margin-top:3rem;font-size:0.9rem">
-    Contact: <a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a>
-  </p>
+  <main class="container">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Café Cal home">
+        <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
+          <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
+          <line x1="6" y1="2" x2="6" y2="4"/>
+          <line x1="10" y1="2" x2="10" y2="4"/>
+          <line x1="14" y1="2" x2="14" y2="4"/>
+        </svg>
+        Café Cal
+      </a>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Help center</p>
+      <h1>Legal &amp; account help</h1>
+      <p class="lead">Documentation for managing your Café Cal account and data.</p>
+    </section>
+
+    <ul class="link-list">
+      <li><a href="delete-account.html">Delete your account</a></li>
+    </ul>
+
+    <footer class="site-footer">
+      <span>Café Cal — built by Nandha Ilangovan</span>
+      <span>Questions? <a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a></span>
+    </footer>
+  </main>
 </body>
 </html>
