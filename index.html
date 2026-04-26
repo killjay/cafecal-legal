@@ -3,42 +3,165 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Café Cal — Legal &amp; account help</title>
-  <meta name="description" content="Legal information and account help for Café Cal — a nutrition and meal tracking app." />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <title>Café Cal — Nutrition tracking, the calm way</title>
+  <meta name="description" content="Café Cal is a nutrition app that gets out of your way. Log meals with a photo, see your day at a glance, and build the habits that stick." />
+  <meta name="theme-color" content="#5a9a4e" />
+  <link rel="icon" type="image/png" href="app-icon.png" />
+  <link rel="apple-touch-icon" href="app-icon.png" />
+  <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="container">
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Café Cal home">
-        <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
-          <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
-          <line x1="6" y1="2" x2="6" y2="4"/>
-          <line x1="10" y1="2" x2="10" y2="4"/>
-          <line x1="14" y1="2" x2="14" y2="4"/>
-        </svg>
+        <span class="brand-mark" aria-hidden="true">c</span>
         Café Cal
       </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="delete-account.html">Account</a>
+      </nav>
     </header>
 
-    <section class="hero">
-      <p class="eyebrow">Help center</p>
-      <h1>Legal &amp; account help</h1>
-      <p class="lead">Documentation for managing your Café Cal account and data.</p>
+    <section class="hero hero--landing">
+      <div>
+        <p class="eyebrow">Nutrition, the calm way</p>
+        <h1>Eat better.<br /><em>Track less.</em></h1>
+        <p class="lead">Café Cal is a nutrition app that gets out of your way. Snap a photo to log a meal, see your day at a glance, and build habits that actually stick — without the guilt or the math.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#features">See how it works</a>
+          <a class="btn btn--ghost" href="delete-account.html">Account &amp; data</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="app-icon.png" alt="Café Cal app icon" width="360" height="360" />
+      </div>
     </section>
 
-    <ul class="link-list">
-      <li><a href="delete-account.html">Delete your account</a></li>
-    </ul>
+    <section id="features" aria-labelledby="features-head">
+      <header class="section-head">
+        <p class="eyebrow">What it does</p>
+        <h2 id="features-head">Designed to disappear into your day.</h2>
+        <p class="lead">Three things, done well. No streaks-anxiety. No 47-tab settings page.</p>
+      </header>
+
+      <div class="features">
+        <article class="feature feature--cal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <h3>Snap a meal</h3>
+          <p>Take a photo and Café Cal estimates calories and macros for you. Tap to refine. Done in seconds.</p>
+        </article>
+
+        <article class="feature feature--protein">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>See your day</h3>
+          <p>One screen, four rings — calories, protein, carbs, fats. Color-coded so you can read it at a glance.</p>
+        </article>
+
+        <article class="feature feature--carbs">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Build the habit</h3>
+          <p>Gentle streaks, weekly insights, and Thali tiers reward consistency — never harass you when you slip.</p>
+        </article>
+      </div>
+
+      <div class="preview-card" role="figure" aria-label="Sample day in Café Cal">
+        <div class="preview-head">
+          <span class="preview-title">Today</span>
+          <span class="preview-date">Apr 26 · Sat</span>
+        </div>
+        <div class="macros">
+          <div class="macro">
+            <div class="macro-ring">
+              <svg viewBox="0 0 36 36" aria-hidden="true">
+                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
+                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#ff8c00" stroke-dasharray="84 100" pathLength="100"/>
+              </svg>
+              <span class="macro-value">1,847</span>
+            </div>
+            <span class="macro-label">Calories</span>
+            <span class="macro-target">/ 2,200 kcal</span>
+          </div>
+          <div class="macro">
+            <div class="macro-ring">
+              <svg viewBox="0 0 36 36" aria-hidden="true">
+                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
+                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#4ade80" stroke-dasharray="69 100" pathLength="100"/>
+              </svg>
+              <span class="macro-value">96g</span>
+            </div>
+            <span class="macro-label">Protein</span>
+            <span class="macro-target">/ 140 g</span>
+          </div>
+          <div class="macro">
+            <div class="macro-ring">
+              <svg viewBox="0 0 36 36" aria-hidden="true">
+                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
+                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#60a5fa" stroke-dasharray="78 100" pathLength="100"/>
+              </svg>
+              <span class="macro-value">188g</span>
+            </div>
+            <span class="macro-label">Carbs</span>
+            <span class="macro-target">/ 240 g</span>
+          </div>
+          <div class="macro">
+            <div class="macro-ring">
+              <svg viewBox="0 0 36 36" aria-hidden="true">
+                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
+                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#facc15" stroke-dasharray="74 100" pathLength="100"/>
+              </svg>
+              <span class="macro-value">52g</span>
+            </div>
+            <span class="macro-label">Fats</span>
+            <span class="macro-target">/ 70 g</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" aria-labelledby="privacy-head" class="commitments-wrap">
+      <header class="section-head">
+        <p class="eyebrow">Privacy</p>
+        <h2 id="privacy-head">Your data is yours.</h2>
+        <p class="lead">Café Cal stores only what's needed to make the app work, and gives you full control to leave whenever you want.</p>
+      </header>
+
+      <div class="commitments">
+        <div class="commitments-grid">
+          <div class="commitment">
+            <h3>One sign-in</h3>
+            <p>Sign in with Google or email. We don't sell or share your data — ever.</p>
+          </div>
+          <div class="commitment">
+            <h3>Anonymous diagnostics</h3>
+            <p>Crash reports use a device install ID, not your account. Kept up to 90 days.</p>
+          </div>
+          <div class="commitment">
+            <h3>Delete anytime</h3>
+            <p>Remove your account and data in one tap from inside the app, or by email.</p>
+          </div>
+        </div>
+        <p style="margin: var(--sp-5) 0 0;">
+          <a class="btn btn--ghost btn--sm" href="delete-account.html">How to delete your account →</a>
+        </p>
+      </div>
+    </section>
 
     <footer class="site-footer">
       <span>Café Cal — built by Nandha Ilangovan</span>
-      <span>Questions? <a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a></span>
+      <span><a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a></span>
     </footer>
   </main>
 </body>
