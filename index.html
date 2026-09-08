@@ -3,166 +3,423 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Café Cal — Nutrition tracking, the calm way</title>
-  <meta name="description" content="Café Cal is a nutrition app that gets out of your way. Log meals with a photo, see your day at a glance, and build the habits that stick." />
-  <meta name="theme-color" content="#5a9a4e" />
-  <link rel="icon" type="image/png" href="app-icon.png" />
-  <link rel="apple-touch-icon" href="app-icon.png" />
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <title>Café Cal | Nutrition tracking, the calm way</title>
+  <meta name="description" content="Café Cal is a nutrition app that gets out of your way. Snap a photo to log a meal, read your whole day at a glance, and build habits that stick." />
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: dark)" />
+  <link rel="canonical" href="https://cafecal.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Café Cal | Nutrition tracking, the calm way" />
+  <meta property="og:description" content="Snap a photo to log a meal, read your whole day at a glance, and build habits that stick." />
+  <meta property="og:image" content="assets/App%20Icon.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" type="image/png" href="assets/App%20Icon.png" />
+  <link rel="apple-touch-icon" href="assets/App%20Icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Bricolage Grotesque (display) + Inter (body and data): the two families
+       the site's visual system is built on. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="components.css" />
 </head>
 <body>
-  <main class="container">
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Café Cal home">
-        <span class="brand-mark" aria-hidden="true">c</span>
-        Café Cal
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="Café Cal home">
+        <img src="assets/Logo%20dark.png" alt="Café Cal" width="757" height="541" />
       </a>
+
       <nav class="nav" aria-label="Primary">
         <a href="#features">Features</a>
+        <a href="#today">Your day</a>
+        <a href="#habit">Habits</a>
         <a href="#privacy">Privacy</a>
-        <a href="delete-account.html">Account</a>
       </nav>
-    </header>
 
-    <section class="hero hero--landing">
-      <div>
-        <p class="eyebrow">Nutrition, the calm way</p>
-        <h1>Eat better.<br /><em>Track less.</em></h1>
-        <p class="lead">Café Cal is a nutrition app that gets out of your way. Snap a photo to log a meal, see your day at a glance, and build habits that actually stick — without the guilt or the math.</p>
-        <div class="hero-actions">
-          <a class="btn btn--primary" href="#features">See how it works</a>
-          <a class="btn btn--ghost" href="delete-account.html">Account &amp; data</a>
-        </div>
+      <div class="site-header__cta">
+        <a class="btn btn--secondary btn--sm" href="delete-account.html">Account &amp; data</a>
       </div>
-      <div class="hero-art">
-        <img src="app-icon.png" alt="Café Cal app icon" width="360" height="360" />
+
+      <button class="nav-toggle" id="menu-button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown: the same primary links, repeated for small screens. -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#features">Features</a>
+      <a href="#today">Your day</a>
+      <a href="#habit">Habits</a>
+      <a href="#privacy">Privacy</a>
+      <a href="delete-account.html">Account &amp; data</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ── Hero ─────────────────────────────────────────────────────── -->
+    <section class="container hero">
+      <div class="hero__copy">
+        <span class="eyebrow hero__badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l1.9 5.1a3 3 0 0 0 1.8 1.8l5.1 1.9-5.1 1.9a3 3 0 0 0-1.8 1.8L12 20.1l-1.9-5.1a3 3 0 0 0-1.8-1.8L3.2 11.3l5.1-1.9a3 3 0 0 0 1.8-1.8L12 2.5Z"/></svg>
+          Nutrition, the calm way
+        </span>
+        <h1>Eat better.<br /><em class="accent">Track less.</em></h1>
+        <p class="lead">Café Cal is a nutrition app that gets out of your way. Snap a photo to log a meal, read your whole day in one screen, and build habits that actually stick, without the guilt or the mental math.</p>
+
+        <div class="actions">
+          <!-- Swap in the Play Store URL here once the listing is public. -->
+          <a class="btn btn--primary" href="#today">
+            See a day in Café Cal
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn--quiet" href="#privacy">How your data is handled</a>
+        </div>
+
+        <ul class="hero__meta">
+          <li class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+            Built for Android
+          </li>
+          <li class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            No ads, ever
+          </li>
+          <li class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Delete everything in one tap
+          </li>
+        </ul>
+      </div>
+
+      <!-- Today tab, rebuilt in HTML from the app's own components. -->
+      <div class="hero__art">
+        <div class="device" role="img" aria-label="The Café Cal Today screen: 1,847 of 2,200 calories consumed, with protein, carbs and fat tiles and three logged meals.">
+          <div class="device__screen" aria-hidden="true">
+
+            <div class="device__statusbar">
+              <span>9:41</span>
+              <span>▮▮▮ 82%</span>
+            </div>
+
+            <div class="device__appbar">
+              <div>
+                <p class="device__date">Saturday, Apr 26</p>
+                <p class="device__title">Today</p>
+              </div>
+              <span class="streak-chip">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2s4 4.2 4 8a4 4 0 0 1-8 0c0-1.2.4-2.2.8-3C7 9 5 11.6 5 14.5A7 7 0 0 0 19 15c0-5-7-13-7-13Z"/></svg>
+                12
+              </span>
+            </div>
+
+            <!-- CalorieHeroCard.kt -->
+            <article class="calorie-card">
+              <div class="calorie-card__head">
+                <span class="calorie-card__label">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2s4 4.2 4 8a4 4 0 0 1-8 0c0-1.2.4-2.2.8-3C7 9 5 11.6 5 14.5A7 7 0 0 0 19 15c0-5-7-13-7-13Z"/></svg>
+                  Calories consumed
+                </span>
+                <span class="burned-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.1 13.3a1 1 0 0 0 .8 1.7H11l-1 7 8.9-11.3a1 1 0 0 0-.8-1.7H12l1-7Z"/></svg>
+                  320
+                </span>
+              </div>
+
+              <div>
+                <p class="calorie-card__value">1,847</p>
+                <p class="calorie-card__caption">consumed of 2,200</p>
+              </div>
+
+              <div class="slim-bar"><i style="--p: 84%"></i></div>
+            </article>
+
+            <!-- MacroCardsRow.kt, trim ring: track at 15 %, fill at goal % -->
+            <div class="tile-row">
+              <article class="tile" style="--tint: var(--protein); --p: 69">
+                <svg class="tile__trim" aria-hidden="true"><rect class="trim-track" pathLength="100"/><rect class="trim-fill" pathLength="100"/></svg>
+                <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6.5 6.5 17.5 17.5"/><path d="m3 8 2-2 3 3-2 2z"/><path d="m16 15 3 3 2-2-3-3z"/></svg>
+                <p class="tile__name">Protein <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></p>
+                <p class="tile__value">96</p>
+                <p class="tile__goal">/ 140 g</p>
+                <p class="tile__caption">44 g left</p>
+              </article>
+
+              <article class="tile" style="--tint: var(--carbs); --p: 78">
+                <svg class="tile__trim" aria-hidden="true"><rect class="trim-track" pathLength="100"/><rect class="trim-fill" pathLength="100"/></svg>
+                <svg class="tile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+                <p class="tile__name">Carbs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></p>
+                <p class="tile__value">188</p>
+                <p class="tile__goal">/ 240 g</p>
+                <p class="tile__caption">52 g left</p>
+              </article>
+
+              <article class="tile" style="--tint: var(--fats); --p: 74">
+                <svg class="tile__trim" aria-hidden="true"><rect class="trim-track" pathLength="100"/><rect class="trim-fill" pathLength="100"/></svg>
+                <svg class="tile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.7c3.4 4 6 7.2 6 10.3a6 6 0 0 1-12 0c0-3.1 2.6-6.3 6-10.3Z"/></svg>
+                <p class="tile__name">Fats <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></p>
+                <p class="tile__value">52</p>
+                <p class="tile__goal">/ 70 g</p>
+                <p class="tile__caption">18 g left</p>
+              </article>
+            </div>
+
+            <!-- MealsSection.kt: one colour per meal type -->
+            <article class="meals-card">
+              <div class="meals-card__head">
+                <span>Meals</span>
+                <span class="data caption">3 logged</span>
+              </div>
+              <ul class="meal-list">
+                <li class="meal-row meal--breakfast">
+                  <span class="meal-row__swatch"></span>
+                  <span class="meal-row__name">Masala oats &amp; eggs</span>
+                  <span class="meal-row__kcal">432</span>
+                </li>
+                <li class="meal-row meal--lunch">
+                  <span class="meal-row__swatch"></span>
+                  <span class="meal-row__name">Chicken thali</span>
+                  <span class="meal-row__kcal">742</span>
+                </li>
+                <li class="meal-row meal--beverage">
+                  <span class="meal-row__swatch"></span>
+                  <span class="meal-row__name">Filter coffee</span>
+                  <span class="meal-row__kcal">118</span>
+                </li>
+              </ul>
+            </article>
+
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="features" aria-labelledby="features-head">
-      <header class="section-head">
-        <p class="eyebrow">What it does</p>
-        <h2 id="features-head">Designed to disappear into your day.</h2>
-        <p class="lead">Three things, done well. No streaks-anxiety. No 47-tab settings page.</p>
-      </header>
+    <!-- ── Features ─────────────────────────────────────────────────── -->
+    <section class="container section" id="features" aria-labelledby="features-title">
+      <div class="section-head">
+        <span class="eyebrow">What it does</span>
+        <h2 id="features-title">Designed to disappear into your day.</h2>
+        <p class="lead">Three things, done properly. No streak anxiety, no forty-tab settings screen, no food database archaeology.</p>
+      </div>
 
-      <div class="features">
-        <article class="feature feature--cal">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          </div>
+      <div class="grid grid--3">
+        <article class="feature feature--calories">
+          <span class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </span>
           <h3>Snap a meal</h3>
-          <p>Take a photo and Café Cal estimates calories and macros for you. Tap to refine. Done in seconds.</p>
+          <p>Photograph your plate and Café Cal estimates the calories and macros. Tap any number to correct it. It learns the foods you eat often.</p>
         </article>
 
         <article class="feature feature--protein">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <h3>See your day</h3>
-          <p>One screen, four rings — calories, protein, carbs, fats. Color-coded so you can read it at a glance.</p>
+          <span class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+          </span>
+          <h3>Read your day</h3>
+          <p>One screen: calories on top, protein, carbs and fat beneath, each in its own colour. You can read where you stand in about a second.</p>
         </article>
 
-        <article class="feature feature--carbs">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
+        <article class="feature feature--streak">
+          <span class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s4 4.2 4 8a4 4 0 0 1-8 0c0-1.2.4-2.2.8-3C7 9 5 11.6 5 14.5A7 7 0 0 0 19 15c0-5-7-13-7-13Z"/></svg>
+          </span>
           <h3>Build the habit</h3>
-          <p>Gentle streaks, weekly insights, and Thali tiers reward consistency — never harass you when you slip.</p>
+          <p>Gentle streaks, weekly insights and Thali tiers reward showing up. Miss a day and nothing shouts at you. The app just carries on.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Rings ────────────────────────────────────────────────────── -->
+    <section class="container section" id="today" aria-labelledby="today-title">
+      <div class="section-head">
+        <span class="eyebrow">Your day at a glance</span>
+        <h2 id="today-title">Four numbers. One look.</h2>
+        <p class="lead">Every nutrient keeps the same colour everywhere in the app: on the ring, on the tile, in the chart, on the share card. You learn it once.</p>
+      </div>
+
+      <div class="rings-card">
+        <div class="rings-card__head">
+          <span class="rings-card__title">Saturday, 26 April</span>
+          <span class="data caption">3 meals · 12-day streak</span>
+        </div>
+
+        <div class="rings">
+          <div class="ring ring--calories" style="--p: 84">
+            <div class="ring__dial">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring__track" cx="50" cy="50" r="45" pathLength="100" />
+                <circle class="ring__fill" cx="50" cy="50" r="45" pathLength="100" />
+              </svg>
+              <span class="ring__value">84%</span>
+            </div>
+            <span class="ring__label">Calories</span>
+            <span class="ring__goal">1,847 / 2,200</span>
+          </div>
+
+          <div class="ring ring--protein" style="--p: 69">
+            <div class="ring__dial">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring__track" cx="50" cy="50" r="45" pathLength="100" />
+                <circle class="ring__fill" cx="50" cy="50" r="45" pathLength="100" />
+              </svg>
+              <span class="ring__value">69%</span>
+            </div>
+            <span class="ring__label">Protein</span>
+            <span class="ring__goal">96 / 140 g</span>
+          </div>
+
+          <div class="ring ring--carbs" style="--p: 78">
+            <div class="ring__dial">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring__track" cx="50" cy="50" r="45" pathLength="100" />
+                <circle class="ring__fill" cx="50" cy="50" r="45" pathLength="100" />
+              </svg>
+              <span class="ring__value">78%</span>
+            </div>
+            <span class="ring__label">Carbs</span>
+            <span class="ring__goal">188 / 240 g</span>
+          </div>
+
+          <div class="ring ring--fats" style="--p: 74">
+            <div class="ring__dial">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring__track" cx="50" cy="50" r="45" pathLength="100" />
+                <circle class="ring__fill" cx="50" cy="50" r="45" pathLength="100" />
+              </svg>
+              <span class="ring__value">74%</span>
+            </div>
+            <span class="ring__label">Fats</span>
+            <span class="ring__goal">52 / 70 g</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Habit / Thali tiers ──────────────────────────────────────── -->
+    <section class="container section" id="habit" aria-labelledby="habit-title">
+      <div class="section-head">
+        <span class="eyebrow">Thali tiers</span>
+        <h2 id="habit-title">Consistency, not perfection.</h2>
+        <p class="lead">Log a complete day and your thali fills up. Keep it going and it moves up a tier. That's the whole game: no points, no leaderboard, no shame.</p>
+      </div>
+
+      <div class="tiers">
+        <div class="tier tier--bronze">
+          <span class="tier__disc" aria-hidden="true"></span>
+          <span class="tier__name">Bronze</span>
+          <span class="tier__meta">3-day streak</span>
+        </div>
+        <div class="tier tier--silver">
+          <span class="tier__disc" aria-hidden="true"></span>
+          <span class="tier__name">Silver</span>
+          <span class="tier__meta">7-day streak</span>
+        </div>
+        <div class="tier tier--gold">
+          <span class="tier__disc" aria-hidden="true"></span>
+          <span class="tier__name">Gold</span>
+          <span class="tier__meta">30-day streak</span>
+        </div>
+        <div class="tier tier--diamond">
+          <span class="tier__disc" aria-hidden="true"></span>
+          <span class="tier__name">Diamond</span>
+          <span class="tier__meta">100-day streak</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Privacy ──────────────────────────────────────────────────── -->
+    <section class="container section" id="privacy" aria-labelledby="privacy-title">
+      <div class="section-head">
+        <span class="eyebrow">Privacy</span>
+        <h2 id="privacy-title">Your data is yours.</h2>
+        <p class="lead">Café Cal stores what it needs to make the app work, and nothing more. Leaving is a first-class feature, not a support ticket.</p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="commitment">
+          <h3>One sign-in</h3>
+          <p>Google or email, your choice. Your meals, weight and goals are never sold, rented or shared with advertisers.</p>
+        </article>
+        <article class="commitment">
+          <h3>Anonymous diagnostics</h3>
+          <p>Crash reports are tied to a device install ID rather than your account, and are kept for up to 90 days to fix bugs.</p>
+        </article>
+        <article class="commitment">
+          <h3>Delete anytime</h3>
+          <p>Remove your account and everything in it from inside the app in one tap, or by email if you can't get in.</p>
         </article>
       </div>
 
-      <div class="preview-card" role="figure" aria-label="Sample day in Café Cal">
-        <div class="preview-head">
-          <span class="preview-title">Today</span>
-          <span class="preview-date">Apr 26 · Sat</span>
-        </div>
-        <div class="macros">
-          <div class="macro">
-            <div class="macro-ring">
-              <svg viewBox="0 0 36 36" aria-hidden="true">
-                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
-                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#ff8c00" stroke-dasharray="84 100" pathLength="100"/>
-              </svg>
-              <span class="macro-value">1,847</span>
+      <p style="margin-top: 40px">
+        <a class="btn btn--secondary btn--sm" href="delete-account.html">
+          How to delete your account
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </p>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────────────────── -->
+    <section class="container section" aria-labelledby="cta-title">
+      <div class="cta-band">
+        <div class="cta">
+          <img class="cta__icon" src="assets/App%20Icon.png" alt="Café Cal app icon" width="96" height="96" loading="lazy" />
+          <div>
+            <h2 id="cta-title">Café Cal for Android</h2>
+            <p class="lead">Free to start. Works offline for logging. Everything you enter stays exportable and deletable.</p>
+            <div class="actions">
+              <a class="btn btn--primary" href="mailto:inandha97@gmail.com?subject=Caf%C3%A9%20Cal">Get in touch</a>
+              <a class="btn btn--quiet" href="delete-account.html">Account &amp; data</a>
             </div>
-            <span class="macro-label">Calories</span>
-            <span class="macro-target">/ 2,200 kcal</span>
-          </div>
-          <div class="macro">
-            <div class="macro-ring">
-              <svg viewBox="0 0 36 36" aria-hidden="true">
-                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
-                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#4ade80" stroke-dasharray="69 100" pathLength="100"/>
-              </svg>
-              <span class="macro-value">96g</span>
-            </div>
-            <span class="macro-label">Protein</span>
-            <span class="macro-target">/ 140 g</span>
-          </div>
-          <div class="macro">
-            <div class="macro-ring">
-              <svg viewBox="0 0 36 36" aria-hidden="true">
-                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
-                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#60a5fa" stroke-dasharray="78 100" pathLength="100"/>
-              </svg>
-              <span class="macro-value">188g</span>
-            </div>
-            <span class="macro-label">Carbs</span>
-            <span class="macro-target">/ 240 g</span>
-          </div>
-          <div class="macro">
-            <div class="macro-ring">
-              <svg viewBox="0 0 36 36" aria-hidden="true">
-                <circle class="ring-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/>
-                <circle class="ring-fill"  cx="18" cy="18" r="15.9" fill="none" stroke-width="3" stroke="#facc15" stroke-dasharray="74 100" pathLength="100"/>
-              </svg>
-              <span class="macro-value">52g</span>
-            </div>
-            <span class="macro-label">Fats</span>
-            <span class="macro-target">/ 70 g</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="privacy" aria-labelledby="privacy-head" class="commitments-wrap">
-      <header class="section-head">
-        <p class="eyebrow">Privacy</p>
-        <h2 id="privacy-head">Your data is yours.</h2>
-        <p class="lead">Café Cal stores only what's needed to make the app work, and gives you full control to leave whenever you want.</p>
-      </header>
-
-      <div class="commitments">
-        <div class="commitments-grid">
-          <div class="commitment">
-            <h3>One sign-in</h3>
-            <p>Sign in with Google or email. We don't sell or share your data — ever.</p>
-          </div>
-          <div class="commitment">
-            <h3>Anonymous diagnostics</h3>
-            <p>Crash reports use a device install ID, not your account. Kept up to 90 days.</p>
-          </div>
-          <div class="commitment">
-            <h3>Delete anytime</h3>
-            <p>Remove your account and data in one tap from inside the app, or by email.</p>
-          </div>
-        </div>
-        <p style="margin: var(--sp-5) 0 0;">
-          <a class="btn btn--ghost btn--sm" href="delete-account.html">How to delete your account →</a>
-        </p>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <span>Café Cal — built by Nandha Ilangovan</span>
-      <span><a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a></span>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="wordmark wordmark--footer" href="index.html" aria-label="Café Cal home">
+            <img src="assets/Logo%20dark.png" alt="Café Cal" width="757" height="541" loading="lazy" />
+          </a>
+        </div>
+        <div class="site-footer__col">
+          <nav aria-label="Footer">
+            <a href="#features">Features</a>
+            <a href="links.html">Get the app</a>
+            <a href="#privacy">Privacy</a>
+            <a href="delete-account.html">Delete your account</a>
+            <a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a>
+          </nav>
+        </div>
+      </div>
+      <p class="site-footer__legal">© 2026 Café Cal. Built by Nandha Ilangovan.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var button = document.getElementById('menu-button');
+      var menu = document.getElementById('mobile-menu');
+      if (!button || !menu) return;
+      button.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      menu.addEventListener('click', function (event) {
+        if (!event.target.closest('a')) return;
+        menu.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,1241 @@
+/* ============================================================================
+   Café Cal: components
+   Page-level building blocks for index.html and delete-account.html.
+   Loads AFTER styles.css and consumes its :root tokens; it never redefines
+   them. Everything here is mobile-first: base rules are the narrow layout,
+   min-width queries widen it.
+
+   Shared motion curve (calai ships 200–300ms / cubic-bezier(.4,0,.2,1)) is
+   written out literally rather than tokenised, since styles.css owns :root.
+   ========================================================================= */
+
+/* ============================================================================
+   HOME: hero
+   ========================================================================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(40px, 5vw, 72px);
+  align-items: center;
+  padding-block: clamp(48px, 7vw, 88px) var(--sp-section);
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* calai's signature pill above the H1: 42px tall, hairline, avatar cluster
+   tucked into the left inset. Degrades to a plain pill with no avatars. */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  margin: 0;
+  padding: 5px 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  /* The markup pairs .hero__badge with .eyebrow; neutralise the eyebrow's
+     uppercase/tracking so the pill reads as calai's sentence-case badge. */
+  text-transform: none;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+.hero__badge svg { width: 15px; height: 15px; flex: none; }
+
+/* Only the avatar-cluster variant needs the tight left inset; without :has()
+   support the badge simply keeps its symmetric padding. */
+.hero__badge:has(.hero__avatars) { padding-left: 5px; gap: 10px; }
+
+@media (min-width: 480px) {
+  .hero__badge { font-size: 14px; }
+}
+
+.hero__avatars {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.hero__avatars > * {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: 2px solid var(--paper);
+  border-radius: var(--r-pill);
+  background: var(--tint-2);
+  object-fit: cover;
+}
+
+.hero__avatars > * + * { margin-left: -11px; }
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* calai renders the second hero line at medium weight, not italic. */
+.hero h1 .accent,
+.hero__copy h1 em.accent {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.hero .lead {
+  max-width: 510px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+}
+
+@media (max-width: 479px) {
+  .actions { flex-direction: column; align-items: stretch; width: 100%; }
+  .actions > * { width: 100%; }
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__art {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1000px) {
+  .hero { grid-template-columns: 1.05fr 0.95fr; }
+  .hero__art { justify-content: flex-end; }
+}
+
+/* ============================================================================
+   HOME: device mockup (the app's Today screen)
+   ========================================================================= */
+
+.device {
+  display: flex;
+  flex-direction: column;
+  width: min(360px, 100%);
+  aspect-ratio: 9 / 19;
+  padding: 10px;
+  border-radius: 44px;
+  background: var(--dark);
+  box-shadow:
+    var(--shadow-dark),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.device__screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  padding: 16px;
+  border-radius: 36px;
+  background: var(--tint);
+  font-size: 12px;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+.device__statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.device__appbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.device__date {
+  margin: 0 0 2px;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.device__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.streak-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  /* --cream-ink (#8A5A18) is the system's readable dark amber. */
+  background: color-mix(in srgb, var(--streak) 20%, transparent);
+  color: var(--cream-ink);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.streak-chip svg { width: 13px; height: 13px; flex: none; }
+
+/* Calorie hero card ───────────────────────────────────────── */
+
+.calorie-card,
+.meals-card {
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 1px 10px rgba(30, 26, 36, 0.05);
+}
+
+.calorie-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calorie-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.calorie-card__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.calorie-card__label svg { width: 13px; height: 13px; flex: none; color: var(--calories); }
+
+.burned-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--calories-burned) 16%, transparent);
+  color: color-mix(in srgb, var(--calories-burned) 62%, var(--ink));
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.burned-chip svg { width: 11px; height: 11px; flex: none; }
+
+.calorie-card__value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.calorie-card__caption {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* Slim capsule bar: width is driven by the inline `--p` the HTML sets. */
+.slim-bar {
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--line);
+  overflow: hidden;
+}
+
+.slim-bar > i {
+  display: block;
+  width: var(--p, 0%);
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--calories);
+  transition: width 700ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Macro tiles with their trim rings ──────────────────────────
+   Each .tile carries inline `--tint` (a macro colour) and `--p` (0–100).
+   NOTE: inside a .tile, `var(--tint)` is that macro colour, NOT the global
+   section tint token; nothing here may use --tint for a surface. */
+
+.tile-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.tile {
+  position: relative;
+  min-height: 96px;
+  padding: 10px;
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: 0 1px 10px rgba(30, 26, 36, 0.05);
+  text-align: left;
+  overflow: hidden;
+}
+
+.tile__trim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* The HTML rects carry only pathLength="100", so the geometry is set here via
+   the CSS geometry properties. A browser that ignores them simply collapses
+   the rects to nothing and the tile still reads as a white card. */
+.tile__trim .trim-track,
+.tile__trim .trim-fill {
+  x: 1px;
+  y: 1px;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  rx: 15px;
+  fill: none;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.tile__trim .trim-track { stroke: color-mix(in srgb, var(--tint) 15%, transparent); }
+
+/* An SVG rect's path already begins at its top-left corner and runs
+   clockwise, which is exactly where the app starts the trim, so the fill
+   needs no rotation, only the dash offset the inline --p provides. */
+.tile__trim .trim-fill {
+  stroke: var(--tint);
+  stroke-linecap: round;
+  stroke-dasharray: var(--p) 100;
+  transition: stroke-dasharray 700ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tile__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-bottom: 6px;
+  color: var(--tint);
+}
+
+.tile__name {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0 0 2px;
+  font-size: 10.5px;
+  color: var(--ink-3);
+}
+
+.tile__name svg { width: 11px; height: 11px; flex: none; }
+
+.tile__value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.tile__goal {
+  margin: 0;
+  font-size: 10.5px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.tile__caption {
+  margin: 4px 0 0;
+  font-size: 10px;
+  color: var(--ink-4);
+}
+
+/* Meals card ─────────────────────────────────────────────── */
+
+/* Fills the remaining screen height so the mockup reads like a real list view. */
+.device__screen > .meals-card { flex: 1 1 auto; }
+
+.meals-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.meals-card__head > :last-child { font-weight: 400; color: var(--ink-3); }
+
+.meal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.meal-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.meal-row__swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--meal, var(--ink-4));
+}
+
+.meal-row__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meal-row__kcal {
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.meal--breakfast { --meal: var(--meal-breakfast); }
+.meal--lunch     { --meal: var(--meal-lunch); }
+.meal--beverage  { --meal: var(--meal-beverage); }
+
+/* ============================================================================
+   HOME: feature + commitment cards
+   ========================================================================= */
+
+.feature,
+.commitment {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 32px);
+  border: 1px solid rgba(228, 229, 233, 0.6);
+  border-radius: var(--r-card);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature:hover,
+.commitment:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+.feature__icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  flex: none;
+  border-radius: var(--r-sm);
+  background: var(--tint-2);
+  color: var(--ink);
+}
+
+.feature__icon svg { width: 28px; height: 28px; }
+
+/* The three modifiers tint ONLY the icon chip, and only barely; calai's
+   card system is near-monochrome. */
+.feature--calories { --feature-tint: var(--calories); }
+.feature--protein  { --feature-tint: var(--protein); }
+.feature--streak   { --feature-tint: var(--streak); }
+
+.feature--calories .feature__icon,
+.feature--protein .feature__icon,
+.feature--streak .feature__icon {
+  background: color-mix(in srgb, var(--feature-tint) 14%, var(--tint-2));
+  color: color-mix(in srgb, var(--feature-tint) 55%, var(--ink));
+}
+
+.feature h3,
+.commitment h3 {
+  margin: 16px 0 12px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.commitment h3 { margin-top: 0; }
+
+.feature p,
+.commitment p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+/* ============================================================================
+   HOME: rings card
+   ========================================================================= */
+
+.rings-card {
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid rgba(228, 229, 233, 0.6);
+  border-radius: var(--r-card);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.rings-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.rings-card__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.rings-card__head > :last-child { color: var(--ink-3); }
+
+.rings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  justify-items: center;
+  text-align: center;
+}
+
+@media (min-width: 760px) {
+  .rings { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ring__dial {
+  position: relative;
+  width: clamp(96px, 14vw, 128px);
+  aspect-ratio: 1;
+}
+
+.ring__dial svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring__track,
+.ring__fill {
+  fill: none;
+  stroke-width: 9;
+}
+
+.ring__track { stroke: var(--line); }
+
+.ring__fill {
+  stroke: var(--ring-colour, var(--ink));
+  stroke-linecap: round;
+  stroke-dasharray: var(--p) 100;
+  transition: stroke-dasharray 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ring--calories { --ring-colour: var(--calories); }
+.ring--protein  { --ring-colour: var(--protein); }
+.ring--carbs    { --ring-colour: var(--carbs); }
+.ring--fats     { --ring-colour: var(--fats); }
+
+.ring__value {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.ring__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.ring__goal {
+  font-size: 13px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================================
+   HOME: Thali tiers
+   ========================================================================= */
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (min-width: 820px) {
+  .tiers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px;
+  border: 1px solid rgba(228, 229, 233, 0.6);
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition:
+    transform 240ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tier:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+.tier__disc {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: var(--r-pill);
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.92), transparent 58%),
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--tier, var(--ink-4)) 90%, #fff),
+      color-mix(in srgb, var(--tier, var(--ink-4)) 62%, var(--ink))
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 4px 12px -4px color-mix(in srgb, var(--tier, var(--ink-4)) 55%, transparent);
+}
+
+.tier__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.tier__meta {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.tier--bronze  { --tier: var(--thali-bronze); }
+.tier--silver  { --tier: var(--thali-silver); }
+.tier--gold    { --tier: var(--thali-gold); }
+.tier--diamond { --tier: var(--thali-diamond); }
+
+/* ============================================================================
+   HOME: dark CTA band
+   ========================================================================= */
+
+.cta-band {
+  padding: clamp(40px, 6vw, 72px);
+  border-radius: var(--r-band);
+  background: var(--dark);
+  color: #fff;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(24px, 4vw, 40px);
+  text-align: center;
+}
+
+.cta__icon {
+  width: 96px;
+  height: 96px;
+  flex: none;
+  border-radius: 24px;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+}
+
+.cta-band h1,
+.cta-band h2,
+.cta-band h3 { color: #fff; }
+
+.cta-band h2 { margin: 0 0 12px; }
+
+.cta-band .lead {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cta .actions { justify-content: center; margin-top: 24px; }
+
+@media (min-width: 720px) {
+  .cta { flex-direction: row; align-items: center; text-align: left; }
+  .cta .actions { justify-content: flex-start; }
+}
+
+/* ============================================================================
+   LEGAL: page hero
+   ========================================================================= */
+
+.page-hero {
+  max-width: var(--wrap-3xl);
+  margin-inline: auto;
+  padding-block: clamp(56px, 8vw, 96px) 0;
+}
+
+.page-hero h1 {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.page-hero .lead {
+  margin: 0 0 20px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+/* ============================================================================
+   LEGAL: option cards + numbered steps
+   ========================================================================= */
+
+.option {
+  padding: clamp(24px, 3vw, 32px);
+  margin-bottom: 24px;
+  border: 1px solid rgba(228, 229, 233, 0.6);
+  border-radius: var(--r-card);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.option__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+/* Scoped so it never inherits the 48px section h2 scale. */
+.option__head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.option p {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.option > :last-child { margin-bottom: 0; }
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+/* Block + absolute marker, deliberately NOT grid: a grid container blockifies
+   every child, which would drop each inline <strong> onto its own row. */
+.steps li {
+  position: relative;
+  padding-left: 38px;
+  min-height: 26px;
+  counter-increment: step;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-pill);
+  background: var(--tint);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ============================================================================
+   LEGAL: callout
+   ========================================================================= */
+
+.callout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--cream-line);
+  border-radius: var(--r-card);
+  background: var(--cream);
+  color: var(--cream-ink);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.callout p { margin: 0; }
+.callout strong { font-weight: 700; color: inherit; }
+
+.callout .icon-badge {
+  background: color-mix(in srgb, var(--cream-ink) 12%, transparent);
+  color: var(--cream-ink);
+}
+
+.callout a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* ============================================================================
+   LEGAL: data panels
+   ========================================================================= */
+
+.panel {
+  padding: clamp(24px, 3vw, 32px);
+  border: 1px solid rgba(228, 229, 233, 0.6);
+  border-radius: var(--r-card);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.panel ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panel li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.panel li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--ink-4);
+}
+
+/* Both panels stay white; only the badge carries the semantic colour. */
+.panel--destructive .icon-badge {
+  background: color-mix(in srgb, var(--destructive) 14%, var(--tint-2));
+  color: color-mix(in srgb, var(--destructive) 70%, var(--ink));
+}
+
+.panel--retained .icon-badge {
+  background: color-mix(in srgb, var(--info) 14%, var(--tint-2));
+  color: color-mix(in srgb, var(--info) 70%, var(--ink));
+}
+
+/* ============================================================================
+   LEGAL: link list
+   ========================================================================= */
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-list li { border-bottom: 1px solid var(--line); }
+
+.link-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 16px;
+  padding-inline: 16px;
+  margin-inline: -16px;
+  border-radius: var(--r-sm);
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-list a::after {
+  content: '\2192';
+  flex: none;
+  color: var(--ink-3);
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-list a:hover {
+  background: var(--tint);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.link-list a:hover::after {
+  transform: translateX(4px);
+  color: var(--ink);
+}
+
+/* ============================================================================
+   LEGAL: FAQ accordion (<details> / <summary>)
+   Assumes: .faq is the <details>, .faq__q the <summary> whose LAST child is
+   the chevron (an <svg> or a <span> wrapping one), .faq__a the answer body.
+   ========================================================================= */
+
+.faq {
+  border: 1px solid rgba(228, 229, 233, 0.6);
+  border-radius: var(--r-card);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.faq + .faq { margin-top: 12px; }
+
+.faq__q {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.faq__q::-webkit-details-marker { display: none; }
+
+.faq__q > svg:last-child,
+.faq__q > span:last-child {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  padding: 6px;
+  border-radius: var(--r-pill);
+  background: var(--tint);
+  color: var(--ink);
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq[open] > .faq__q > svg:last-child,
+.faq[open] > .faq__q > span:last-child { transform: rotate(180deg); }
+
+.faq__a {
+  padding: 0 24px 24px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.faq__a > :last-child { margin-bottom: 0; }
+
+/* ============================================================================
+   Motion preferences: neutralise the hover lifts declared above.
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .feature,
+  .commitment,
+  .tier {
+    transition: box-shadow 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .feature:hover,
+  .commitment:hover,
+  .tier:hover { transform: none; }
+
+  .link-list a:hover::after { transform: none; }
+
+  .slim-bar > i,
+  .tile__trim .trim-fill,
+  .ring__fill { transition: none; }
+}
+
+/* ============================================================================
+   LINKS: store picker (links.html)
+   ========================================================================= */
+
+.links-hero {
+  padding-block: clamp(48px, 7vw, 88px) 0;
+  text-align: center;
+}
+
+.links-hero__icon {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 28px;
+  border-radius: 22px;
+  box-shadow: var(--shadow-card);
+}
+
+/* The badge is centred here rather than inline-start like the legal page. */
+.links-hero .hero__badge {
+  margin-bottom: 20px;
+}
+
+.links-hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2.25rem, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.links-hero .lead {
+  max-width: 46ch;
+  margin-inline: auto;
+  font-size: var(--fs-lead);
+  color: var(--ink-2);
+}
+
+.links-section {
+  padding-block: clamp(36px, 5vw, 56px) var(--sp-section);
+}
+
+.store-links {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 720px) {
+  .store-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Whole card is the link: Cal AI's card recipe, made interactive. */
+.store-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(20px, 2.6vw, 24px);
+  border: 1px solid rgba(228, 229, 233, 0.6);
+  border-radius: var(--r-card);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.store-link:hover {
+  transform: translateY(-4px);
+  border-color: var(--line);
+  box-shadow: var(--shadow-lift);
+}
+
+.store-link__glyph {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-sm);
+  background: var(--ink);
+  color: #fff;
+}
+
+.store-link__glyph svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* Google Play keeps its own four-colour mark, so it sits on a neutral chip. */
+.store-link__glyph--play {
+  background: var(--tint-2);
+}
+
+.store-link__glyph--play svg {
+  width: 26px;
+  height: 26px;
+}
+
+.store-link__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.store-link__platform {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.store-link__store {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.store-link__arrow {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  color: var(--ink-4);
+  transition:
+    transform var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.store-link:hover .store-link__arrow {
+  transform: translateX(4px);
+  color: var(--ink);
+}
+
+.links-note {
+  margin: 28px 0 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-link:hover { transform: none; }
+  .store-link:hover .store-link__arrow { transform: none; }
+}

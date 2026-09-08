@@ -4,63 +4,141 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Delete your Café Cal account</title>
-  <meta name="description" content="How to delete your Café Cal account and all associated data." />
-  <meta name="theme-color" content="#5a9a4e" />
-  <link rel="icon" type="image/png" href="app-icon.png" />
-  <link rel="apple-touch-icon" href="app-icon.png" />
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <meta name="description" content="How to delete your Café Cal account and every piece of data attached to it, from inside the app or by email." />
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: dark)" />
+  <link rel="canonical" href="https://cafecal.app/delete-account.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Delete your Café Cal account" />
+  <meta property="og:description" content="Delete your Café Cal account and all associated data, from inside the app or by email." />
+  <meta property="og:image" content="assets/App%20Icon.png" />
+
+  <link rel="icon" type="image/png" href="assets/App%20Icon.png" />
+  <link rel="apple-touch-icon" href="assets/App%20Icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="components.css" />
 </head>
 <body>
-  <main class="container container--narrow">
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Café Cal home">
-        <span class="brand-mark" aria-hidden="true">c</span>
-        Café Cal
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="Café Cal home">
+        <img src="assets/Logo%20dark.png" alt="Café Cal" width="757" height="541" />
       </a>
+
       <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#privacy">Privacy</a>
       </nav>
-    </header>
 
-    <section class="hero">
-      <p class="eyebrow">Account &amp; data</p>
+      <div class="site-header__cta">
+        <a class="btn btn--secondary btn--sm" href="index.html">Back to home</a>
+      </div>
+
+      <button class="nav-toggle" id="menu-button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#privacy">Privacy</a>
+      <a href="index.html">Back to home</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ── Page hero ────────────────────────────────────────────────── -->
+    <section class="container container--narrow page-hero">
+      <span class="eyebrow hero__badge">Account &amp; data</span>
       <h1>Delete your account.</h1>
-      <p class="lead">You can delete your Café Cal account and all associated data at any time. The fastest way is from inside the app.</p>
-      <p class="meta">Last updated April 26, 2026</p>
+      <p class="lead">You can delete your Café Cal account and everything attached to it at any time. The quickest route is from inside the app. It takes under a minute and needs no reply from us.</p>
+      <p>
+        <span class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          Last updated 26 April 2026
+        </span>
+      </p>
     </section>
 
-    <section>
-      <h2>Option 1 — From inside the app</h2>
-      <p class="muted">Recommended. Takes under a minute.</p>
-      <ol class="steps">
-        <li>Open Café Cal on your Android device and sign in.</li>
-        <li>Go to the <strong>Settings</strong> tab.</li>
-        <li>Scroll to the bottom and tap <strong>Delete Account</strong>.</li>
-        <li>Confirm in the dialog. Email-and-password users re-enter their password; Google Sign-In users confirm directly.</li>
-        <li>Your account and data are deleted immediately, and you are signed out.</li>
-      </ol>
+    <!-- ── The two routes ───────────────────────────────────────────── -->
+    <section class="container container--narrow section" aria-labelledby="how-title">
+      <div class="section-head">
+        <span class="eyebrow">How to delete</span>
+        <h2 id="how-title">Two ways out.</h2>
+      </div>
+
+      <article class="option">
+        <div class="option__head">
+          <span class="icon-badge" style="background: var(--accent-soft); color: var(--accent-text)" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </span>
+          <h2>From inside the app</h2>
+          <span class="badge">Recommended</span>
+        </div>
+
+        <ol class="steps">
+          <li>Open Café Cal on your Android device and sign in.</li>
+          <li>Go to the <strong>Settings</strong> tab.</li>
+          <li>Scroll to the bottom and tap <strong>Delete Account</strong>.</li>
+          <li>Confirm in the dialog. Email-and-password accounts re-enter their password; Google Sign-In accounts confirm directly.</li>
+          <li>Your account and data are deleted immediately, and you're signed out.</li>
+        </ol>
+      </article>
+
+      <article class="option">
+        <div class="option__head">
+          <span class="icon-badge" style="background: color-mix(in srgb, var(--info) 16%, transparent); color: var(--info)" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          </span>
+          <h2>By email</h2>
+          <span class="badge badge--neutral">If you can't get in</span>
+        </div>
+
+        <p>Email us from the address tied to your Café Cal account with the subject <strong>“Delete my Café Cal account”</strong>. We verify ownership and complete the deletion within <strong>30 days</strong>, usually much sooner.</p>
+
+        <p style="margin-bottom: 0">
+          <a class="btn btn--primary btn--sm" href="mailto:inandha97@gmail.com?subject=Delete%20my%20Caf%C3%A9%20Cal%20account">
+            Email a deletion request
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </p>
+      </article>
+
+      <div class="callout" style="margin-top: 32px">
+        <span class="icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        </span>
+        <p><strong>Deletion is permanent and cannot be undone.</strong> If you'd like a copy of your data first, email <a href="mailto:inandha97@gmail.com?subject=Export%20my%20Caf%C3%A9%20Cal%20data">inandha97@gmail.com</a> and we'll send it as CSV or JSON before anything is removed.</p>
+      </div>
     </section>
 
-    <section>
-      <h2>Option 2 — By email</h2>
-      <p class="muted">For when you can't access the app.</p>
-      <p>Send an email from the address tied to your Café Cal account to <a href="mailto:inandha97@gmail.com?subject=Delete%20my%20Caf%C3%A9%20Cal%20account">inandha97@gmail.com</a> with the subject <em>"Delete my Café Cal account"</em>. We'll verify ownership and complete the deletion within <strong>30 days</strong>.</p>
-      <p><a class="btn btn--primary btn--sm" href="mailto:inandha97@gmail.com?subject=Delete%20my%20Caf%C3%A9%20Cal%20account">Email a deletion request →</a></p>
-    </section>
+    <!-- ── What happens to the data ─────────────────────────────────── -->
+    <section class="container container--narrow section" aria-labelledby="data-title">
+      <div class="section-head">
+        <span class="eyebrow">Scope</span>
+        <h2 id="data-title">What happens to your data.</h2>
+        <p class="lead">Everything tied to your account goes. A small amount of anonymous diagnostic data, which can't be linked back to you, ages out on its own schedule.</p>
+      </div>
 
-    <section>
-      <h2>What happens to your data</h2>
-      <div class="data-grid">
-        <div class="panel">
-          <h3>Permanently deleted</h3>
+      <div class="grid grid--2">
+        <article class="panel panel--destructive">
+          <h3>
+            <span class="icon-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            </span>
+            Permanently deleted
+          </h3>
           <ul>
-            <li>Authentication record (email, display name, sign-in provider)</li>
-            <li>Profile (name, date of birth, gender, height, weight, activity, goals, preferences)</li>
+            <li>Authentication record: email, display name, sign-in provider</li>
+            <li>Profile: name, date of birth, gender, height, weight, activity level, goals, preferences</li>
             <li>All meal entries and meal photos</li>
             <li>Daily nutrition logs and streak history</li>
             <li>Saved foods library</li>
@@ -68,31 +146,81 @@
             <li>Profile photo</li>
             <li>Local app settings stored on the device</li>
           </ul>
-        </div>
-        <div class="panel">
-          <h3>Retained briefly</h3>
+        </article>
+
+        <article class="panel panel--retained">
+          <h3>
+            <span class="icon-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            Retained briefly
+          </h3>
           <ul>
-            <li><strong>Anonymous crash diagnostics</strong> (Firebase Crashlytics) tied to a device install ID — not to your account — kept up to <strong>90 days</strong> to help fix bugs.</li>
-            <li><strong>Aggregated analytics</strong> (Firebase Analytics) retained per Firebase's default — up to <strong>14 months</strong>. These cannot be linked back to you after deletion.</li>
-            <li>Records we are legally required to retain (none anticipated for routine accounts).</li>
+            <li><strong>Anonymous crash diagnostics</strong> (Firebase Crashlytics), tied to a device install ID rather than your account, kept up to <strong>90 days</strong> so bugs can still be fixed.</li>
+            <li><strong>Aggregated analytics</strong> (Firebase Analytics) retained on Firebase's default schedule, up to <strong>14 months</strong>. These cannot be linked back to you once your account is gone.</li>
+            <li>Records we're legally required to keep: none anticipated for a routine account.</li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
-    <div class="callout">
-      <strong>Account deletion is permanent and cannot be undone.</strong> If you'd like a copy of your data first, email <a href="mailto:inandha97@gmail.com?subject=Export%20my%20Caf%C3%A9%20Cal%20data">inandha97@gmail.com</a> and we'll send it as CSV or JSON.
-    </div>
+    <!-- ── Questions ────────────────────────────────────────────────── -->
+    <section class="container container--narrow section" aria-labelledby="questions-title">
+      <div class="section-head">
+        <span class="eyebrow">Anything else</span>
+        <h2 id="questions-title">Questions.</h2>
+        <p class="lead">One person builds Café Cal, and that person reads every email.</p>
+      </div>
 
-    <section>
-      <h2>Questions</h2>
-      <p>Contact <a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a>.</p>
+      <ul class="link-list">
+        <li><a href="mailto:inandha97@gmail.com?subject=Delete%20my%20Caf%C3%A9%20Cal%20account">Request account deletion</a></li>
+        <li><a href="mailto:inandha97@gmail.com?subject=Export%20my%20Caf%C3%A9%20Cal%20data">Request a copy of my data</a></li>
+        <li><a href="mailto:inandha97@gmail.com">Something else: inandha97@gmail.com</a></li>
+        <li><a href="index.html#privacy">How Café Cal handles data</a></li>
+      </ul>
     </section>
 
-    <footer class="site-footer">
-      <span>Café Cal — built by Nandha Ilangovan</span>
-      <span><a href="index.html">← Back to home</a></span>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="wordmark wordmark--footer" href="index.html" aria-label="Café Cal home">
+            <img src="assets/Logo%20dark.png" alt="Café Cal" width="757" height="541" loading="lazy" />
+          </a>
+        </div>
+        <div class="site-footer__col">
+          <nav aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="links.html">Get the app</a>
+            <a href="index.html#privacy">Privacy</a>
+            <a href="delete-account.html">Delete your account</a>
+            <a href="mailto:inandha97@gmail.com">inandha97@gmail.com</a>
+          </nav>
+        </div>
+      </div>
+      <p class="site-footer__legal">© 2026 Café Cal. Built by Nandha Ilangovan.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var button = document.getElementById('menu-button');
+      var menu = document.getElementById('mobile-menu');
+      if (!button || !menu) return;
+      function close() {
+        menu.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+      }
+      button.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      menu.addEventListener('click', function (event) {
+        if (event.target.closest('a')) close();
+      });
+    })();
+  </script>
 </body>
 </html>
