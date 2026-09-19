@@ -1181,13 +1181,25 @@
   height: 30px;
 }
 
+/* App Store: the icon is its own blue tile, so it fills the chip edge to edge. */
+.store-link__glyph--appstore {
+  background: none;
+  overflow: hidden;
+}
+
+.store-link__glyph--appstore svg {
+  width: 52px;
+  height: 52px;
+  display: block;
+}
+
 /* Google Play keeps its own four-colour mark, so it sits on a neutral chip. */
 .store-link__glyph--play {
   background: var(--tint-2);
 }
 
 .store-link__glyph--play svg {
-  width: 26px;
+  width: 24px;
   height: 26px;
 }
 
